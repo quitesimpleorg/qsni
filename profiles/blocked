@@ -1,0 +1,21 @@
+#!/bin/sh
+export PATH="/sbin:/usr/sbin:/usr:/bin"
+CGROUP_ID=2000
+function addrule()
+{
+	iptables -C $@ -m cgroup --cgroup $CGROUP_ID &> /dev/null || iptables -A $@ -m cgroup --cgroup $CGROUP_ID 
+	if [ $? -ne 0 ] ; then
+		echo "Failed adding iptables rule" >&2
+		exit 1
+	fi
+}
+NAME=$(basename $0)
+[ -d /sys/fs/cgroup/net_cls/$NAME ] || mkdir /sys/fs/cgroup/net_cls/$NAME 
+if [ $? -ne 0 ] ; then
+echo "Failed creating cgroup directory";
+exit 1
+fi
+echo -n "$CGROUP_ID" > /sys/fs/cgroup/net_cls/$NAME/net_cls.classid
+
+addrule OUTPUT -j DROP
+
