@@ -16,10 +16,13 @@ CONFIG_NETFILTER_XT_MATCH_CGROUP
 CONFIG_NET_CLS_CGROUP
 
 Example
-=======
+-------
+```
 $ qsni blocked ping google.com
 ping: unknown host google.com
+```
 
+```
 $ qsni lan bash
 $ ping 8.8.8.8
 PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
@@ -30,9 +33,10 @@ PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.
 $ qsni someprofile bash
 already assigned to a net class, thus you can't use this binary to change that
 $
+```
 
 Setup
-=====
+-----
 If cgroup_root isn't mounted to /sys/fs/cgroup, do it or change the 
 constant in the source to the correct path.
 
