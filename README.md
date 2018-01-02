@@ -40,6 +40,7 @@ Setup
 If cgroup_root isn't mounted to /sys/fs/cgroup, do it or change the 
 constant in the source to the correct path.
 
+```
 make 
 cp qsni /usr/bin/
 chmod o=rx /usr/bin/qsni
@@ -50,6 +51,7 @@ mkdir /etc/qsni.d
 chmod o=rx /etc/qsni.d
 cp profiles/blocked /etc/qsni.d/blocked
 chmod o=r /etc/qsni.d/blocked
+```
 
 Every profile must have its own unique CGROUP_ID value in the profile 
 file.
