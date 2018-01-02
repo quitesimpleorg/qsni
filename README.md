@@ -11,7 +11,7 @@ Requirements
 You need an iptables version that supports cgroup matching (e. g. 
 version >= 1.6);
 
-The following kernel config paramaters must be set:
+The following kernel config parameters must be set:
 CONFIG_NETFILTER_XT_MATCH_CGROUP
 CONFIG_NET_CLS_CGROUP
 
@@ -61,7 +61,7 @@ Security discussion
 --------------------
 This alone is not a satisfactory way to prevent misbehaving programs
 to contact destinations you don't want them to. While the restrictions
-also apply to the children of the launched progorams, at a minimum, file
+also apply to the children of the launched programs, at a minimum, file
 system isolation is also necessary and perhaps IPC etc.
 
 qsni however does not aim to be a complete "jailing/isolation" solution.
