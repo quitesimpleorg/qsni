@@ -1,0 +1,7 @@
+[package]
+name = "qsni"
+version = "0.1.0"
+authors = ["Albert S. <mail@quitesimple.org>"]
+
+[dependencies]
+nix = "0.11.0"
