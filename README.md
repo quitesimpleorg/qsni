@@ -9,11 +9,11 @@ the setup is not as simple/easy.
 Requirements
 ------------
 You need an iptables version that supports cgroup matching (e. g. 
-version >= 1.6);
+version >= 1.6) and rust/cargo to build the binary
 
 The following kernel config parameters must be set:
-CONFIG_NETFILTER_XT_MATCH_CGROUP
-CONFIG_NET_CLS_CGROUP
+  * CONFIG_NETFILTER_XT_MATCH_CGROUP
+  * CONFIG_NET_CLS_CGROUP
 
 Example
 -------
@@ -41,8 +41,8 @@ If cgroup_root isn't mounted to /sys/fs/cgroup, do it or change the
 constant in the source to the correct path.
 
 ```
-make 
-cp qsni /usr/bin/
+cargo build --release 
+cp target/release/qsni /usr/bin/
 chmod o=rx /usr/bin/qsni
 chown root:root /usr/bin/qsni
 setcap 'cap_setuid=ep cap_setgid=ep' /usr/bin/qsni
@@ -67,4 +67,4 @@ system isolation is also necessary and perhaps IPC etc.
 qsni however does not aim to be a complete "jailing/isolation" solution.
 Nevertheless, I have use cases for it, hence its existence.
 
-¹ name is preliminary, 
+¹ name is preliminary 
