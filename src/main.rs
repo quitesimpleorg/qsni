@@ -1,9 +1,6 @@
-use std::env;
 use std::ffi::CString;
 use std::io::BufRead;
 use std::io::BufReader;
-use std::io::Error;
-use std::io::ErrorKind;
 use std::io::Write;
 
 static PROFILEPATH: &'static str = "/etc/qsni.d/";
@@ -35,7 +32,7 @@ fn init_profile(profilepath: &str) {
         Ok(ForkResult::Parent { child, .. }) => {
             let waitresult = waitpid(child, Some(WaitPidFlag::empty())).expect("waitpid failed");
             match waitresult {
-                WaitStatus::Exited(pid, code) => {
+                WaitStatus::Exited(_pid, code) => {
                     if code != 0 {
                         panic!("profile setup script failed");
                     }
